@@ -1,0 +1,3 @@
+lacture # 3:
+Node -> everything
+List -> add, get, remove, constructur
