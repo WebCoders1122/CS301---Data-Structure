@@ -4,32 +4,34 @@ using namespace std;
 
 class Node
 {
-private:
-    int data;
-    Node *nextNode;
-
 public:
-    int get()
+    // constructor and destructor
+    Node()
+    {
+        this->data = 0;
+        this->next = NULL;
+    };
+    ~Node() {};
+    // getters and setters
+    int getData()
     {
         return data;
     }
-    void set(int data)
+    void setData(int data)
     {
         this->data = data;
     }
 
-    Node *getNextNode()
+    Node *getNext()
     {
-        return nextNode;
+        return next;
     }
-    void setNextNode(Node *nextNode)
+    void setNext(Node *nextNode)
     {
-        this->nextNode = nextNode;
+        this->next = nextNode;
     }
+
+private:
+    int data;
+    Node *next;
 };
-
-int main()
-{
-
-    return 0;
-}
