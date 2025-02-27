@@ -1,5 +1,6 @@
 #include <iostream>
-#include "PriorityQueue.h"
+// #include "PriorityQueueWithArray.h"
+#include "PriorityQueueWithLinkedList.h"
 using namespace std;
 int main()
 {
@@ -12,9 +13,8 @@ int main()
         cout << "3. Display" << endl;
         cout << "4. Size" << endl;
         cout << "5. IsEmpty" << endl;
-        cout << "6. IsFull" << endl;
-        cout << "7. Front" << endl;
-        cout << "8. Rear" << endl;
+        cout << "6. Front" << endl;
+        cout << "7. Rear" << endl;
         cout << "0. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
@@ -24,10 +24,10 @@ int main()
             int data;
             cout << "Enter data: ";
             cin >> data;
-            pq.insert(data);
+            pq.enqueue(data);
             break;
         case 2:
-            pq.remove();
+            pq.dequeue();
             break;
         case 3:
             pq.display();
@@ -39,13 +39,10 @@ int main()
             pq.isEmpty();
             break;
         case 6:
-            pq.isFull();
-            break;
-        case 7:
             cout << "Front: " << pq.front() << endl;
             break;
-        case 8:
-            cout << "Rear: " << pq.last() << endl;
+        case 7:
+            cout << "Rear: " << pq.rear() << endl;
             break;
         case 0:
             cout << "Exiting..." << endl;
