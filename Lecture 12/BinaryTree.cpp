@@ -22,37 +22,37 @@ void insert(Node *root, int value)
     Node *newNode = new Node;
     newNode->setInfo(value);
 
-    Node *current = root;
-    Node *parent = nullptr;
+    Node *q = root;
+    Node *p = root;
 
     // Find the correct position to insert
-    while (current != nullptr)
+    while (value != (p->getInfo()) && q != nullptr)
     {
-        parent = current;
+        p = q;
 
-        if (value == current->getInfo())
+        if (value > p->getInfo())
         {
-            cout << "\nDuplicate Value\n";
-            delete newNode;
-            return;
+            q = p->getRight();
         }
-        else if (value < current->getInfo())
+        else if (value < p->getInfo())
         {
-            current = current->getLeft();
-        }
-        else
-        {
-            current = current->getRight();
+            q = p->getLeft();
         }
     }
 
     // Insert the new node at the correct position
-    if (value < parent->getInfo())
+    if (value == p->getInfo())
     {
-        parent->setLeft(newNode);
+        cout << "\nDuplicate Value\n";
+        delete newNode;
+        return;
+    }
+    else if (value < p->getInfo())
+    {
+        p->setLeft(newNode);
     }
     else
     {
-        parent->setRight(newNode);
+        p->setRight(newNode);
     }
 }
