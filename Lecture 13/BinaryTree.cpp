@@ -1,5 +1,6 @@
 #include <iostream>
-#include "TreeNode.h"
+// #include "TreeNode.h"
+#include "Stack with array.cpp"
 using namespace std;
 void insert(Node *, int);
 void preorder(Node *);
@@ -65,7 +66,7 @@ void insert(Node *root, int value)
         p->setRight(newNode);
     }
 };
-// functions to print the tree
+// functions to print the tree with recursion calls
 void preorder(Node *treeNode)
 {
     if (treeNode != nullptr)
@@ -75,15 +76,15 @@ void preorder(Node *treeNode)
         preorder(treeNode->getRight());
     }
 };
-void inorder(Node *treeNode)
-{
-    if (treeNode != nullptr)
-    {
-        inorder(treeNode->getLeft());
-        cout << treeNode->getInfo() << " ";
-        inorder(treeNode->getRight());
-    }
-}
+// void inorder(Node *treeNode)
+// {
+//     if (treeNode != nullptr)
+//     {
+//         inorder(treeNode->getLeft());
+//         cout << treeNode->getInfo() << " ";
+//         inorder(treeNode->getRight());
+//     }
+// }
 void postorder(Node *treeNode)
 {
     if (treeNode != nullptr)
@@ -92,4 +93,28 @@ void postorder(Node *treeNode)
         postorder(treeNode->getRight());
         cout << treeNode->getInfo() << " ";
     }
+}
+// functions to print the tree without recursion calls
+void inorder(Node *treeNode)
+{
+    Stack stack;
+    Node *temp = treeNode;
+    // this do while loop will run until the stack is empty and the temp is not nullptr pushing all nodes in the stack
+    do
+    {
+        // this while loop will push all the left nodes in the stack
+        while (temp != nullptr)
+        {
+            stack.push(temp);
+            temp = temp->getLeft();
+        }
+        // this will pop the last node from the stack and print it
+        if (!stack.isEmpty())
+        {
+            temp = stack.pop();
+            cout << temp->getInfo() << " ";
+            temp = temp->getRight();
+        }
+
+    } while (!stack.isEmpty() || temp != nullptr);
 }

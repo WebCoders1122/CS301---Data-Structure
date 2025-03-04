@@ -1,3 +1,6 @@
+
+#ifndef TREE_NODE_H
+#define TREE_NODE_H
 #include <iostream>
 using namespace std;
 // Tree Node class
@@ -42,3 +45,5 @@ public:
         right = r;
     }
 };
+
+#endif // TREE_NODE_H
