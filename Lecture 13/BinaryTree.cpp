@@ -1,11 +1,13 @@
 #include <iostream>
 // #include "TreeNode.h"
 #include "Stack with array.cpp"
+#include "Queue for tree.h"
 using namespace std;
 void insert(Node *, int);
 void preorder(Node *);
 void inorder(Node *);
 void postorder(Node *);
+void levelOrder(Node *);
 int main()
 {
     int numbers[] = {3, 7, 2, 7, 4, 9, 2, 5, 9, 1, 8, 4, 6, 5, 10};
@@ -23,6 +25,8 @@ int main()
     inorder(root);
     cout << "\nPostorder: ";
     postorder(root);
+    cout << "\nLevel Order: ";
+    levelOrder(root);
     return 0;
 }
 
@@ -118,3 +122,24 @@ void inorder(Node *treeNode)
 
     } while (!stack.isEmpty() || temp != nullptr);
 }
+// level order traversal
+void levelOrder(Node *root)
+{
+    Queue q;
+    Node *node = root;
+    q.enqueue(node);
+
+    while (!q.isEmpty())
+    {
+        cout << node->getInfo() << " ";
+        node = q.dequeue();
+        if (node->getLeft() != nullptr)
+        {
+            q.enqueue(node->getLeft());
+        }
+        if (node->getRight() != nullptr)
+        {
+            q.enqueue(node->getRight());
+        }
+    }
+};
