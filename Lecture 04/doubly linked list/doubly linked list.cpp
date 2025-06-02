@@ -22,17 +22,17 @@ public:
     {
         Node *newNode = new Node();
         newNode->setData(data);
-        if (currentNode == nullptr)
+        if (currentNode == nullptr) // if list is empty
         {
             head = newNode;
             currentNode = newNode;
             tail = newNode;
         }
-        else
+        else // if list is not empty
         {
             Node *nextNode = currentNode->getNext();
             Node *preNode = currentNode;
-            if (nextNode == nullptr)
+            if (nextNode == nullptr) // if current node is last
             {
                 tail = newNode;
                 currentNode->setNext(newNode);
@@ -40,7 +40,7 @@ public:
                 newNode->setPrev(currentNode);
                 currentNode = newNode;
             }
-            else
+            else // if current node is not the last node
             {
                 newNode->setNext(nextNode);
                 newNode->setPrev(preNode);
@@ -156,7 +156,7 @@ public:
     // delete
     void remove()
     {
-        if (currentNode == nullptr)
+        if (currentNode == nullptr) // if list is empty
         {
             cout << "\n\nList is empty\n";
         }
@@ -182,14 +182,14 @@ public:
         else
         {
             // to delete node
-            if (head == tail && head->getData() == num)
+            if (head == tail && head->getData() == num) // if only one node in the list
             {
                 Node *temp = head;
                 head = nullptr;
                 tail = nullptr;
                 delete temp;
             }
-            else if (head->getData() == num && currentNode == head)
+            else if (head->getData() == num && currentNode == head) // if head node is to be deleted
             {
                 Node *nextNode = currentNode->getNext();
                 Node *temp = currentNode;
@@ -197,7 +197,7 @@ public:
                 head = nextNode;
                 delete temp;
             }
-            else if (tail->getData() == num && currentNode == tail)
+            else if (tail->getData() == num && currentNode == tail) // if tail node is to be deleted
             {
                 Node *preNode = currentNode->getPrev();
                 Node *temp = currentNode;
@@ -205,7 +205,7 @@ public:
                 tail = preNode;
                 delete temp;
             }
-            else
+            else // if (currentNode->getData() == num) // if any other node is to be deleted
             {
 
                 // pre cur next

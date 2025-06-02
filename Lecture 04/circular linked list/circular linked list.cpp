@@ -90,7 +90,7 @@ public:
         cout << "Enter value to remove from list: ";
         cin >> value;
         start();
-        while (current->getNext() != head)
+        while (current->getNext() != head) // loop through the list
         {
             if (value == current->getData())
             {
@@ -100,7 +100,7 @@ public:
             next();
         };
 
-        if (head == tail && head->getData() == match)
+        if (head == tail && head->getData() == match) // only one node in the list
         {
             Node *ptr = head;
             head = nullptr;
@@ -110,7 +110,7 @@ public:
             delete ptr;
             size--;
         }
-        else if (head->getData() == match)
+        else if (head->getData() == match) // if the first node is to be removed
         {
             Node *ptr = head;
             head = head->getNext();
@@ -118,7 +118,7 @@ public:
             delete ptr;
             size--;
         }
-        else if (tail->getData() == match)
+        else if (tail->getData() == match) // if the last node is to be removed
         {
             start();
             while (current->getNext() != head)
@@ -131,7 +131,7 @@ public:
             delete ptr;
             size--;
         }
-        else
+        else // if any other node is to be removed
         {
             Node *ptr = current;
             lastCurrent->setNext(current->getNext());
@@ -154,7 +154,7 @@ public:
             cout << "--> " << current->getData() << endl;
             next();
         } while (current != head);
-        }
+    }
 
 private:
     Node *head;
